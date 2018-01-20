@@ -1,0 +1,10 @@
+.vignette {
+    text-align: center;
+}
+
+    .vignette__img,
+    .vignette__txt{
+        display: inline-block;
+        max-width: 49%;
+        vertical-align: middle;
+    }

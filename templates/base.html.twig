@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Pauline Louis">
+    <link rel="icon" href="">
+
+    <title>{% block title %}MonAnimal{% endblock %}</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand|Ubuntu" rel="stylesheet">
+    <link href="{{ asset('css/base/base.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sitepublic/layout/footer.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sitepublic/layout/header.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sitepublic/layout/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sitepublic/layout/nav.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sitepublic/module/vignette.css') }}" rel="stylesheet">
+    {% block stylesheets %}
+    {% endblock %}
+
+</head>
+<body>
+<header class="header">
+    <h1 class="header__title">MonAnimal</h1>
+    <h2 class="header__sub-title">Des photos et des animaux</h2>
+</header>
+<nav class="nav">
+    <ul class="nav__list">
+        {# Pour faire un lien, {{ path('nom_de_la_route') }} #}
+        <li class="nav__item"><a href="{{ path('homepage') }}">Accueil</a></li>
+        <li class="nav__item"><a href="">Photos</a></li>
+        <li class="nav__item"><a href="">Mon compte</a></li>
+    </ul>
+</nav>
+
+<main class="main">
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+    Copyright MonAnimal
+</footer>
+
+{% block javascripts %}{% endblock %}
+</body>
+</html>
+

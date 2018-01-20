@@ -1,0 +1,20 @@
+.nav {
+    text-align: center;
+}
+
+    .nav__list {
+        list-style: none;
+    }
+
+    .nav__item {
+        display: inline-block;
+        padding: 0 10px;
+    }
+
+        .nav__item a {
+            color: #000;
+        }
+
+        .nav__item a:hover {
+            border-bottom: #000 solid 2px;
+        }
