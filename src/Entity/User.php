@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="user")
@@ -20,16 +21,29 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=25, unique=true)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 25,
+     *      minMessage = "Votre pseudo doit avoir au minimum {{ limit }} caractères",
+     *      maxMessage = "Votre pseudo doit avoir au maximum {{ limit }} caractères"
+     * )
+     * @Assert\NotBlank()
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Assert\NotBlank()
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=60, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email(
+     *     message = "L'email '{{ value }}' n'est pas correct.",
+     *     checkMX = true
+     * )
      */
     private $email;
 
