@@ -42,8 +42,5 @@ security:
                 path: /logout
                 target: /
 
-    # pour limiter des parties du site à certain role. Ici, à chaque url /admin, seul les super_admin pour y accéder
-    # ex : monanimal.com/admin : accessible que par super_admin
-    # ex2 : monanimal.com/admin/gestion : toujours accessible que par super_admin
     access_control:
         - { path: ^/admin, roles: ROLE_SUPER_ADMIN }
