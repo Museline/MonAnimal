@@ -5,10 +5,13 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity("email", message="Cet e-mail existe déjà")
+ * @UniqueEntity("username", message="Ce pseudo est déjà existant")
  */
 class User implements UserInterface, \Serializable
 {
@@ -22,7 +25,7 @@ class User implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=25, unique=true)
      * @Assert\Length(
-     *      min = 5,
+     *      min = 3,
      *      max = 25,
      *      minMessage = "Votre pseudo doit avoir au minimum {{ limit }} caractères",
      *      maxMessage = "Votre pseudo doit avoir au maximum {{ limit }} caractères"
@@ -33,6 +36,12 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Assert\Length(
+     *      min = 8,
+     *      max = 14,
+     *      minMessage = "Votre mot de passe doit avoir au minimum {{ limit }} caractères",
+     *      maxMessage = "Votre mot de passe doit avoir au maximum {{ limit }} caractères"
+     * )
      * @Assert\NotBlank()
      */
     private $password;
@@ -56,7 +65,7 @@ class User implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="array")
      */
-    private $roles;
+    private $roles = [];
 
     public function __construct()
     {
@@ -64,7 +73,7 @@ class User implements UserInterface, \Serializable
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid('', true));
 
-        $this->setRoles('ROLE_USER');
+        $this->setRoles(array ('ROLE_USER'));
     }
 
     /**
@@ -199,7 +208,7 @@ class User implements UserInterface, \Serializable
     /**
      * @param mixed $roles
      */
-    public function setRoles($roles): void
+    public function setRoles(array $roles): void
     {
         $this->roles = $roles;
     }

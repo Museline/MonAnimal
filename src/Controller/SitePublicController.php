@@ -8,10 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class SitePublicController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="accueil")
      */
     public function indexAction()
     {
-        return $this->render('sitepublic/index.html.twig');
+        return $this->render('sitepublic/index.html.twig', array('mainTitle' => 'Accueil', 'subtitle' => 'Partagez vos photos et découvrez-en de nouvelles !'));
     }
 }

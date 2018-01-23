@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block content %}
-    <div class="vignette">
-        <img src="{{ asset('images/chien-chat.jpg') }}" class="vignette__img">
-        <div class="vignette__txt">
-            <p>Rejoignez la communauté des passionnés de leurs animaux et partagez vos meilleurs photos. C'est ici que votre compagnon devra une star !</p>
-            <button>Poster mes photos</button>
-        </div>
-    </div>
+{% block main %}
+<div class="row">
+	<div class=" col-md-6 offset-md-3">
+		<div class="card">
+		        <img src="{{ asset('img/chien-chat.jpg') }}" class="img-fluid" alt="Un chiot et un chaton qui dorment ensemble">
+		    <div class="card-body">
+		        <p class="card-text">Rejoignez la communauté des passionnés de leurs animaux et partagez vos meilleurs photos. C'est ici que votre compagnon devra une star !</p>
+		        <a href="" class="btn btn-primary">Poster mes photos</a>
+		    </div>
+		</div>
+	</div>
+</div>
 {% endblock %}
